@@ -1,2 +1,2 @@
 # Rhombus Stream Deck Plugin
-# rhombus-streamdeck-plugin
+Streamdeck Plugin by Muizz Aman Khan
