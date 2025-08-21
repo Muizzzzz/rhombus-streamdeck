@@ -1,0 +1,10 @@
+2025-08-05T17:26:06.243Z ERROR Process encountered uncaught exception 
+Error: Unable to establish a connection with Stream Deck, missing command line arguments: -port, -pluginUUID, -registerEvent, -info
+    at de.getRegistrationParameters (file:///Users/muizzkhan/rhombus/rhombus-camera/com.muizz.rhombus-camera.sdPlugin/bin/plugin.js:14:8946)
+    at get registrationParameters (file:///Users/muizzkhan/rhombus/rhombus-camera/com.muizz.rhombus-camera.sdPlugin/bin/plugin.js:14:7644)
+    at de.connect (file:///Users/muizzkhan/rhombus/rhombus-camera/com.muizz.rhombus-camera.sdPlugin/bin/plugin.js:14:7862)
+    at Object.connect (file:///Users/muizzkhan/rhombus/rhombus-camera/com.muizz.rhombus-camera.sdPlugin/bin/plugin.js:14:24103)
+    at file:///Users/muizzkhan/rhombus/rhombus-camera/com.muizz.rhombus-camera.sdPlugin/bin/plugin.js:14:24334
+    at ModuleJob.run (node:internal/modules/esm/module_job:274:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:644:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 15px;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+      color: #ffffff;
+      min-height: 100vh;
+    }
+    
+    .container {
+      background: linear-gradient(145deg, #1e1e2e 0%, #2d2d44 100%);
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    h3 {
+      margin: 0 0 25px 0;
+      font-size: 20px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #e0e0e0;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    input, select {
+      width: 100%;
+      padding: 12px 16px;
+      background: linear-gradient(145deg, #2a2a3e 0%, #1e1e2e 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      font-size: 14px;
+      color: #ffffff;
+      transition: all 0.3s ease;
+      box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+    
+    input::placeholder {
+      color: #888888;
+    }
+    
+    input:focus, select:focus {
+      outline: none;
+      border-color: #00d4ff;
+      box-shadow: 
+        0 0 0 3px rgba(0, 212, 255, 0.2),
+        0 4px 16px rgba(0, 212, 255, 0.1);
+      transform: translateY(-1px);
+    }
+    
+    .status {
+      font-size: 12px;
+      margin-top: 8px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 3px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .error { 
+      color: #ff6b6b;
+      border-left-color: #ff6b6b;
+      background: rgba(255, 107, 107, 0.1);
+    }
+    
+    .success { 
+      color: #51cf66;
+      border-left-color: #51cf66;
+      background: rgba(81, 207, 102, 0.1);
+    }
+    
+    button {
+      width: 100%;
+      padding: 14px 20px;
+      background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 
+        0 4px 16px rgba(0, 212, 255, 0.3),
+        0 2px 8px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    button:hover {
+      background: linear-gradient(135deg, #00b8e6 0%, #0088b3 100%);
+      transform: translateY(-2px);
+      box-shadow: 
+        0 6px 20px rgba(0, 212, 255, 0.4),
+        0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    button:hover::before {
+      left: 100%;
+    }
+    
+    button:active {
+      transform: translateY(0);
+      box-shadow: 
+        0 2px 8px rgba(0, 212, 255, 0.3),
+        0 1px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    #debugButton {
+      background: linear-gradient(135deg, #ff9500 0%, #ff6b35 100%);
+      margin-top: 10px;
+    }
+    
+    #debugButton:hover {
+      background: linear-gradient(135deg, #e68500 0%, #e65a2a 100%);
+    }
+    
+    /* Glowing effect for active elements */
+    .container::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #00d4ff, #0099cc, #00d4ff);
+      border-radius: 18px;
+      z-index: -1;
+      opacity: 0.3;
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+    
+    @keyframes glow {
+      0% { opacity: 0.3; }
+      100% { opacity: 0.6; }
+    }
+    
+    /* Custom scrollbar */
+    select::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    select::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+    }
+    
+    select::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+      border-radius: 4px;
+    }
+    
+    select::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, #00b8e6 0%, #0088b3 100%);
+    }
+    
+    /* Dropdown options styling */
+    select option {
+      background: #2a2a3e;
+      color: #e0e0e0;
+      padding: 8px 12px;
+    }
+    
+    select option:hover {
+      background: #3a3a4e;
+      color: #ffffff;
+    }
+    
+    select option:checked {
+      background: #1e1e2e;
+      color: #00d4ff;
+      font-weight: 500;
+    }
+    
+    /* Status animations */
+    .status {
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Loading animation for doors */
+    .loading {
+      position: relative;
+      color: #00d4ff;
+    }
+    
+    .loading::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      margin: 4px 0 0 8px;
+      border: 2px solid #00d4ff;
+      border-radius: 50%;
+      border-top-color: transparent;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h3>🚪 Rhombus Door Control</h3>
+    
+    <div class="form-group">
+      <label for="apiKey">🔑 API Key</label>
+      <input id="apiKey" type="password" placeholder="Enter your Rhombus API key">
+      <div id="apiStatus" class="status">Enter API key to load doors</div>
+    </div>
+    
+    <div class="form-group">
+      <label for="doorList">🚪 Door</label>
+      <select id="doorList">
+        <option value="">Select a door...</option>
+      </select>
+      <div id="doorStatus" class="status">Enter API key to load doors</div>
+    </div>
+    
+
+  </div>
+
+  <script src="door-inspector.js"></script>
+</body>
+</html> 

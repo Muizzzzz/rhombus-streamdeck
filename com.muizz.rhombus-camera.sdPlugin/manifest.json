@@ -1,0 +1,103 @@
+{
+	"Name": "Rhombus",
+	"Version": "0.1.0.0",
+	"Author": "Muizz Khan",
+	"Description": "Control Rhombus cameras and door locks via Stream Deck",
+	"UUID": "com.muizz.rhombus-camera",
+	"SDKVersion": 2,
+	"Software": {
+		"MinimumVersion": "6.5"
+	},
+	"Nodejs": {
+		"Version": "20",
+		"Debug": "enabled"
+	},
+	"OS": [
+		{
+			"Platform": "mac",
+			"MinimumVersion": "12"
+		},
+		{
+			"Platform": "windows",
+			"MinimumVersion": "10"
+		}
+	],
+	"Category": "Rhombus",
+	"CategoryIcon": "imgs/plugin/category-icon",
+	"Icon": "imgs/plugin/marketplace",
+	"CodePath": "bin/plugin.js",
+	"PropertyInspectorPath": "ui/camera-settings.html",
+	"Actions": [
+		{
+			"Name": "Open Camera",
+			"UUID": "com.muizz.rhombus-camera.action",
+			"Icon": "imgs/actions/camera/icon",
+			"Tooltip": "Launch the selected Rhombus camera stream in VLC",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/camera/icon-off",
+					"TitleAlignment": "middle",
+					"FontSize": 14,
+					"Title": "Camera Off"
+				},
+				{
+					"Image": "imgs/actions/camera/icon-on",
+					"TitleAlignment": "middle",
+					"FontSize": 14,
+					"Title": "Camera On"
+				}
+			]
+		},
+		{
+			"Name": "Door Lock",
+			"UUID": "com.muizz.rhombus-door.action",
+			"Icon": "imgs/actions/door/icon",
+			"Tooltip": "Toggle lock/unlock for the selected Rhombus door",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/door/icon-locked",
+					"TitleAlignment": "middle",
+					"FontSize": 14,
+					"Title": "Locked"
+				},
+				{
+					"Image": "imgs/actions/door/icon-unlocked",
+					"TitleAlignment": "middle",
+					"FontSize": 14,
+					"Title": "Unlocked"
+				}
+			],
+			"PropertyInspectorPath": "ui/door-settings.html"
+		},
+		{
+			"Name": "Open Audio Gateway",
+			"UUID": "com.muizz.rhombus-camera.audio",
+			"Tooltip": "Listen to a selected Rhombus Audio Gateway",
+			"Icon": "imgs/actions/audio/icon",
+			"States": [
+				{
+					"Image": "imgs/actions/audio/icon-off",
+					"TitleAlignment": "middle",
+					"FontSize": 14,
+					"Title": "Audio Off"
+				},
+				{
+					"Image": "imgs/actions/audio/icon-on",
+					"TitleAlignment": "middle",
+					"FontSize": 14,
+					"Title": "Audio On"
+				}
+			],
+			"PropertyInspectorPath": "ui/audio-settings.html",
+			"Controllers": [
+				"Keypad"
+			]
+		}
+	]
+}

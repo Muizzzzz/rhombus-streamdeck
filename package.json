@@ -1,0 +1,12 @@
+{
+  "name": "com.muizz.rhombus-camera",
+  "version": "0.1.0",
+  "description": "Open a selected Rhombus camera stream in VLC via Stream Deck",
+  "type": "module",
+  "main": "bin/plugin.js",
+  "dependencies": {
+    "@elgato/streamdeck": "^1.4.0"
+  },
+  "author": "Muizz Khan",
+  "license": "MIT"
+}
