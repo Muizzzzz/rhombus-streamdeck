@@ -28,7 +28,7 @@ A comprehensive StreamDeck plugin for controlling Rhombus security systems, incl
   - macOS 12+ 
   - Windows 10+
 - **Media Players**:
-  - **MPV**: Required for camera streaming (hardcoded path: `/Users/muizzkhan/Downloads/mpv.app/Contents/MacOS/mpv`)
+  - **MPV**: Required for camera streaming: https://mpv.io/installation/
   - **Streamlink**: Python module for HLS stream handling
 - **Python 3**: Required for API response parsing and Streamlink
 
